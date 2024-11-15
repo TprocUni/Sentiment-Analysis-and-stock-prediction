@@ -26,7 +26,7 @@ import joblib
 
 #------------------------------------------constants------------------------------------------------------------
 # Replace YOUR_API_KEY with your actual API key
-API_KEY = "XR43KVWO8E8BYI66"
+API_KEY = "YOUR_API_KEY"
 SYMBOL = '^FTSE'
 
 #Database path

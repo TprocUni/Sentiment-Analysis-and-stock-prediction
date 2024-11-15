@@ -1,0 +1,22 @@
+{
+    "API_KEY": "8430767628244cd38592bfb23d6694d9",
+    "DB_PATH": "DB\\data.db",
+    "CSV_PATH": "DB\\CSVs",
+    "GRAPH_PATH": "FinalPythonCode\\DB\\GraphStates",
+    "SERVER_IP": "http://127.0.0.1:5000/",
+    "INDEX": "NASDAQ",
+    "THRESHOLD": 0.25,
+    "START_DATE": "2015-01-01",
+    "END_DATE": "2020-01-01",
+    "INDUSTRY": "Pharmaceuticals & Medical Research",
+    "HEURISTIC": "7",
+    "CURRENT_ARTICLE": [
+        12,
+        "AstraZeneca PLC",
+        0.017969135802469133,
+        true
+    ],
+    "SA_HEURISTIC": "1",
+    "PROPAGATION_METHOD": 1,
+    "PROPAGATION_DEPTH": 1
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotly NetworkX Graph</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="graph-container">
+    <div id="graph-placeholder" style="display: none;"></div>
+    <p id="waiting-message">Waiting for graph call...</p>
+</div>
+<!-- Add slider, input box, submit button, and description -->
+<div>
+    <label for="correlation-threshold">Correlation Threshold:</label>
+    <input type="number" id="correlation-input" min="0" max="1" step="0.01" value="0">
+    <input type="range" id="correlation-threshold" name="correlation-threshold" min="0" max="1" step="0.01" value="0">
+    <button id="submit-threshold" onclick="submitThreshold()">Submit</button>
+    <p>*Lets you change the threshold for which stock correlation values are used <br>(This value represents the absolute value, e.g. threshold = 0.4 implies correlation values less than -0.4 and greater than 0.4 are allowed)</p>
+</div>
+  
+  
+
+<script>
+    function displayGraph(figure) {
+        // Remove waiting message
+        document.getElementById('waiting-message').style.display = 'none';
+
+        // Create the plot using the received figure object
+        Plotly.newPlot('graph-placeholder', figure.data, figure.layout);
+
+        // Display the graph
+        document.getElementById('graph-placeholder').style.display = 'block';
+    }
+
+
+    function fetchGraphData() {
+        fetch('/get-graph', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error fetching graph data');
+                }
+            })
+            .then(data => displayGraph(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    function submitThreshold() {
+        let threshold = document.getElementById('correlation-threshold').value;
+
+        fetch('/update-threshold', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'threshold': threshold })
+        })
+            .then(response => {
+            if (response.ok) {
+                console.log('Threshold updated');
+            } else {
+                throw new Error('Error updating threshold');
+            }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Add event listeners for slider and input box - matches them up
+    document.getElementById('correlation-threshold').addEventListener('input', function () {
+    document.getElementById('correlation-input').value = this.value;
+    });
+
+    document.getElementById('correlation-input').addEventListener('input', function () {
+    document.getElementById('correlation-threshold').value = this.value;
+    });
+
+
+
+    // Add the setInterval code snippet here
+    const updateInterval = 1000; // Time interval in milliseconds (e.g., 5000ms = 5 seconds)
+
+    setInterval(fetchGraphData, updateInterval);
+</script>
+
+</body>
+</html>

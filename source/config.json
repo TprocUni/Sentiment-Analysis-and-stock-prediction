@@ -1,5 +1,5 @@
 {
-    "API_KEY": "8430767628244cd38592bfb23d6694d9",
+    "API_KEY": "YOUR_API_KEY",
     "DB_PATH": "DB\\data.db",
     "CSV_PATH": "DB\\CSVs",
     "GRAPH_PATH": "FinalPythonCode\\DB\\GraphStates",

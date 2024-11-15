@@ -1,0 +1,5 @@
+{"nth element split FTSE100 1": {"averageVariationTrimmed": 14.257456717199306, "ratioOfStatisticallyRelevant": 0.8037930227113088, 
+"ratioOfIncorrectAssessments": 0.16602233676975944, "noOfincompatibleDatasets": 315, "noOfNaNs": 0}, "nth element split SP500 1": 
+{"averageVariationTrimmed": 41.491113661018815, "ratioOfStatisticallyRelevant": 0.9586947975363648, "ratioOfIncorrectAssessments": 
+0.03723878460720566, "noOfincompatibleDatasets": 7747, "noOfNaNs": 0}, "nth element split NASDAQ 1": {"averageVariationTrimmed": 36.893987308282924,
+ "ratioOfStatisticallyRelevant": 0.9663677130044843, "ratioOfIncorrectAssessments": 0.025974025974025976, "noOfincompatibleDatasets": 825, "noOfNaNs": 0}}
